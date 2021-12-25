@@ -1,0 +1,32 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.html",
+    "scripts": {
+        "gulp": "node ./node_modules/gulp/bin/gulp.js php"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JsonTyler/Springbrook.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/JsonTyler/Springbrook/issues"
+    },
+    "homepage": "https://github.com/JsonTyler/Springbrook#readme",
+    "dependencies": {
+        "browser-sync": "^2.27.7",
+        "cssnano": "^5.0.12",
+        "gulp": "^4.0.2",
+        "gulp-postcss": "^9.0.1",
+        "gulp-terser": "^2.1.0",
+        "postcss": "^8.1.0"
+    },
+    "devDependencies": {
+        "gulp-sass": "^5.0.0",
+        "sass": "^1.45.0"
+    }
+}
