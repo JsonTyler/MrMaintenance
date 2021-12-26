@@ -8,15 +8,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/JsonTyler/Springbrook.git"
+        "url": "git+https://github.com/JsonTyler/MrMaintenance.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/JsonTyler/Springbrook/issues"
+        "url": "https://github.com/JsonTyler/MrMaintenance/issues"
     },
-    "homepage": "https://github.com/JsonTyler/Springbrook#readme",
+    "homepage": "https://github.com/JsonTyler/MrMaintenance#readme",
     "dependencies": {
         "browser-sync": "^2.27.7",
         "cssnano": "^5.0.12",
