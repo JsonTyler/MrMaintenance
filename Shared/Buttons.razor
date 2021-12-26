@@ -1,0 +1,57 @@
+@inject NavigationManager NavigationManager
+
+@if(NavigationManager.ToBaseRelativePath(NavigationManager.Uri).Contains("ExpertUserView")){
+    @* Button Section ~ Exper User *@
+    <div class="row">
+        <div class="col-12 d-inline text-end">
+            <button id="btn_Save" class="btn btn-link">
+                <i id="iSave" class="fa fa-save fa-2x" title="Just for looks"></i>
+            </button>
+            <button id="btn_Refresh" class="btn btn-link" title="Reset the form" @onclick="btn_Reset_OnClick">
+                <i id="iRefresh" class="fa fa-refresh text-light fa-2x" title="Click to reset the form"></i>
+            </button>
+            <button id="btn_CogToggle" class="btn btn-link" @onclick="@btn_NormalUserViewToggle_OnClick">
+                <i id="iCogToggle" class="fa fa-cog fa-2x" title="Click to toggle tab setting off"></i>
+            </button>
+        </div>
+    </div>
+} else {
+    @* Button Section ~ Normal User *@
+    <div class="row">
+        <div class="col-12 d-inline text-end">
+            <button id="btn_Save" class="btn btn-link">
+                <i id="iSave" class="fa fa-save fa-2x" title="Just for looks"></i>
+            </button>
+            <button id="btn_CogToggle" class="btn btn-link" @onclick="@btn_ExpertUserViewToggle_OnClick">
+                <i id="iCogToggle" class="fa fa-cog fa-2x" title="Click to toggle tab setting on"></i>
+            </button>
+        </div>
+    </div>
+}
+
+@code{
+
+    /* Description: The OnClick event for the "Tab Settings Cog" icon
+       Behavior: Redirects the user to the "Expert User View"
+    */
+    public void btn_NormalUserViewToggle_OnClick()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    /* Description: The OnClick event for the "Tab Settings Cog" icon
+       Behavior: Redirects the user to the "Expert User View"
+    */
+    public void btn_ExpertUserViewToggle_OnClick()
+    {
+        NavigationManager.NavigateTo("/ExpertUserView");
+    }
+
+    /* Description: The OnClick event for the "Reset" icon
+       Behavior: Refreshes the page
+    */
+    public void btn_Reset_OnClick()
+    {
+        NavigationManager.NavigateTo("/ExpertUserView", true);
+    }
+}

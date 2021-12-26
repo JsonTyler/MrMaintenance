@@ -1,0 +1,44 @@
+@inject NavigationManager NavigationManager
+
+@if(NavigationManager.ToBaseRelativePath(NavigationManager.Uri).Contains("ExpertUserView")){
+    @* Top Bar/Breadcrumb section ~ Expert User *@
+    <div class="row text-white bg-dark">
+        <div class="col-6 text-start">
+            <span class="h5">Springbrook Software</span>
+        </div>
+        <div class="col-6 text-end">
+            <button id="btn_NormalUserView" class="btn btn-link text-white h4" @onclick="@btn_NormalUserView_OnClick"
+                title="Click to go back to normal user view">Maintenance</button>
+            <span id="span_Breadcrumb" class="">
+                >
+                <i id="iBreadcrumb" class="fa fa-cog px-2 fa-lg" title="Tab setting is on"></i>
+            </span>
+        </div>
+    </div>
+} else {
+    @* Top Bar/Breadcrumb section ~ Normal User *@
+    <div class="row text-white bg-dark">
+        <div class="col-6 text-start">
+            <span class="h5">Springbrook Software</span>
+        </div>
+        <div class="col-6 text-end">
+            <button id="btn_NormalUserView" class="btn btn-link text-white h4"
+                title="You are in the normal user view">Maintenance</button>
+            <span id="span_Breadcrumb" class="">
+            </span>
+        </div>
+    </div>
+}
+
+
+
+@code{
+
+    /* Description: The OnClick event for the "Maintenance" breadcrumb
+       Behavior: Redirects the user to the "Normal User View"
+    */
+    public void btn_NormalUserView_OnClick()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

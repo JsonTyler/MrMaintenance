@@ -1,0 +1,154 @@
+@inject NavigationManager NavigationManager
+
+@if(NavigationManager.ToBaseRelativePath(NavigationManager.Uri).Contains("ExpertUserView")){
+    @* Form Section ~ Expert User *@
+    <div class="row mx-2">
+        @foreach (var item in Models.OrderBy(x => x.Order))
+        {
+            <div @ondrop="()=>HandleDrop(item)" @key="item" class=@item.Classes>
+                <div class="row pt-2">
+                    <div class="col-11">
+                        <div class="bg-dark text-white font-weight-bold rounded fp-1 pointer"
+                        @ondragleave="@(()=> {item.IsDragOver = false;})"
+                        @ondragenter="@(()=>{item.IsDragOver = true;})"
+                        style="@(item.IsDragOver?"border-style: solid none none none; border-color:red;":"")"
+                        @ondragstart="() => draggingModel = item" @ondragend="()=> draggingModel = null"
+                        draggable="true" title="Grab and drag me to re-order">
+                            
+                        @item.Name
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-1">
+                    <div class="col">
+                        @if (@item.Name.Contains("Date"))
+                        {
+                            <input type="" class="form-control" onclick="(this.type='date')" />
+                        }
+                        else if (@item.Name.Contains("Number"))
+                        {
+                            <input type="" class="form-control" onclick="(this.type='number')" />
+                        }
+                        else
+                        {
+                            <input type="" class="form-control" onclick="(this.type='text')" />
+                        }
+                    </div>
+                    <div class="col-1 text-center">
+                        <button class="btn btn-link text-dark" title="Click to hide me" @onclick="(()=>btn_removeItem_OnClick(item))">
+                            <i class="fa fa-times fa-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+} else {
+    @* Form Section ~ Normal User *@
+    <div class="row mx-2">
+        @foreach (var item in Models.OrderBy(x => x.Order))
+        {
+            <div @key="item">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <div class="bg-dark text-white rounded font-weight-bold fp-1" 
+                        style="@(item.IsDragOver?"border-style: solid none none none; border-color:red;":"")">
+                            @item.Name
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-1">
+                    <div class="col">
+                        @if(@item.Name.Contains("Date")){
+                            <input type="" class="form-control" onclick="(this.type='date')" />
+                        } else if(@item.Name.Contains("Number")) {
+                            <input type="" class="form-control" onclick="(this.type='number')" />
+                        } else {
+                            <input type="" class="form-control" onclick="(this.type='text')" />
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    // The list of models
+    public List<Model> Models { get; set; } = new();
+
+    // The model being dragged
+    private Model? draggingModel;
+
+    // The list of fields in the Maintenance form
+    List<string> fields = new List<string>()
+    {
+        "Account Number",
+        "Account Description",
+        "Customer Number",
+        "Transaction Date",
+        "Due Date",
+        "Reference Number",
+        "Account Balance",
+        "Outstanding Credits"
+    };
+
+    /* Description: Synchronous method that gets executied when the component is
+       initialized
+       Behavior: Create a row in the form with the input/label for each field
+       in the "fields" list
+    */
+    protected override void OnInitialized()
+    {
+        var i = 0;
+        foreach (string field in fields)
+        {
+            Model m = new() { Order = i, Name = $"{field}"  };
+            Models.Add(m);
+            i++;
+        }
+        base.OnInitialized();
+    }
+
+     /* Description: The HandleDrop method for the landingModel
+       Behavior: Handles the drop when the user re-orders the list of fields
+    */
+    private void HandleDrop(Model landingModel)
+    {
+        if (draggingModel is null)
+        {
+            return;
+        }
+
+        // Keeps copy of original order in memory
+        int originalOrderLanding = landingModel.Order;
+
+        // Model under placemet of landing model is increased by 1
+        Models.Where(x => x.Order >= landingModel.Order).ToList().ForEach(x => x.Order++);
+
+        // Replaces landing model
+        draggingModel.Order = originalOrderLanding;
+
+        int j = 0;
+        foreach (var model in Models.OrderBy(x => x.Order).ToList())
+        {
+            // Check to make sure #'s are from - to n-1
+            model.Order = j++;
+
+            // Removes the the drag over
+            model.IsDragOver = false;
+        }
+    }
+
+
+    /* Description: The OnClick event for the "x" button for form fields
+       Behavior: Hides an item from the Maintenace form
+    */
+    public void btn_removeItem_OnClick(Model formField)
+    {
+        Models.Remove(formField);
+    }
+}
+
+   
