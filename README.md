@@ -9,7 +9,7 @@ A componentized maintenance form web application using Blazor WebAssembly w/ dra
 #### Link: [Demo](https://mrmaintenance.jasontylerrodriguez.com)
 
 ## What technologies does it use? <img src="./logo.png" width="40" />
-Blazor WebAssembly, C#, HTML5/CSS3, Javascript, Bootstrap
+Blazor WebAssembly, C#, HTML5/CSS3/SASS, Javascript, Bootstrap
 
 ## Will I accept pull requests? <img src="./logo.png" width="40" />
 No I will not, as this is an exploratory project that will grow as I learn more about Blazor WebAssembly. I always welcome feedback on how to improve my portfolio projects.
