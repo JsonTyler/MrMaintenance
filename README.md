@@ -14,7 +14,7 @@ Blazor WebAssembly, C#, HTML5/CSS3, Javascript, Bootstrap
 ## Will I accept pull requests? <img src="./logo.png" width="40" />
 No I will not, as this is an exploratory project that will grow as I learn more about Blazor WebAssembly. I always welcome feedback on how to improve my portfolio projects.
 
-## Instructions for VSCode (setting up sass compiling)
+## Instructions for VSCode (setting up sass compiling) <img src="./logo.png" width="40" />
 
 - extension: live-sass compile
    - go to settigs -> formats
