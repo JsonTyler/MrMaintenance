@@ -29,6 +29,17 @@ This repository preserves the standalone Blazor WebAssembly version under the Mr
 
 Preserved as a historical interview project. Pull requests are not currently accepted; feedback is welcome.
 
+## Run locally
+
+With a .NET SDK compatible with `SpringbrookSoftware.csproj` installed:
+
+```bash
+dotnet restore
+dotnet run
+```
+
+Open the local URL printed by the application. The project retains its original framework target; this documentation update does not upgrade its dependencies.
+
 ## Sass setup in VS Code
 
 Install the Live Sass Compiler extension and add this configuration to your VS Code settings:
