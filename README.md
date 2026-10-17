@@ -1,31 +1,40 @@
-## What is it? <img src="./logo.png" width="40" />
+# Mr. Maintenance
 
-#### Name 
-Mr. Maintenance
-#### Purpose:
-A componentized maintenance form web application using Blazor WebAssembly w/ drag n drop functionality.
+A componentized maintenance form web application built with Blazor WebAssembly, featuring drag-and-drop interactions and normal and expert user views.
 
-## Live Version <img src="./logo.png" width="40" />
-#### Link: [Demo](https://mrmaintenance.jasontylerrodriguez.com)
+## Background
 
-## What technologies does it use? <img src="./logo.png" width="40" />
-Blazor WebAssembly, C#, HTML5/CSS3/SASS, Javascript, Bootstrap
+Originally built as a take-home exercise during my successful interview process with Springbrook Software, where I subsequently joined the engineering team.
 
-## Will I accept pull requests? <img src="./logo.png" width="40" />
-No I will not, as this is an exploratory project that will grow as I learn more about Blazor WebAssembly. I always welcome feedback on how to improve my portfolio projects.
+This repository preserves the standalone Blazor WebAssembly version under the Mr. Maintenance name as a historical portfolio sample. It demonstrates the interview exercise, rather than production software delivered at Springbrook.
 
-## Instructions for VSCode (setting up sass compiling) <img src="./logo.png" width="40" />
+## Demo
 
-- extension: live-sass compile
-   - go to settigs -> formats
-        - code:
-```      
+[View Mr. Maintenance](https://mrmaintenance.jasontylerrodriguez.com)
+
+## Technologies
+
+- Blazor WebAssembly and C#
+- HTML, CSS, and Sass
+- JavaScript
+- Bootstrap
+
+## Project structure
+
+- `Pages/`: normal and expert user views.
+- `Shared/`: reusable form, button, breadcrumb, and layout components, plus the shared model.
+- `wwwroot/`: static assets and styles.
+
+## Maintenance status
+
+Preserved as a historical interview project. Pull requests are not currently accepted; feedback is welcome.
+
+## Sass setup in VS Code
+
+Install the Live Sass Compiler extension and add this configuration to your VS Code settings:
+
+```json
 {
-    "workbench.colorTheme": "GitHub Dark Dimmed",
-    "window.zoomLevel": -1,
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
     "liveSassCompile.settings.formats": [
         {
             "format": "expanded",
